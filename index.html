@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dafiti - Moda e Estilo</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- TOP BAR -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-links">
+                <a href="#">Venda na Dafiti</a>
+                <a href="#">Baixe o App</a>
+                <a href="#">Atendimento</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="container header-container">
+            <div class="logo">
+                <a href="#">dafiti</a>
+            </div>
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="O que você procura?">
+                <button id="searchBtn"><i class="fas fa-search"></i></button>
+            </div>
+            <div class="header-actions">
+                <div class="header-action" id="loginBtn">
+                    <i class="fas fa-user"></i>
+                    <span>Entrar</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="header-action" id="wishlistBtn">
+                    <i class="fas fa-heart"></i>
+                    <span>Favoritos</span>
+                </div>
+                <div class="header-action cart-action" id="cartBtn">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- NAVIGATION -->
+    <nav class="nav">
+        <div class="container">
+            <ul class="nav-list">
+                <li class="nav-item has-dropdown">
+                    <a href="#">FEMININO</a>
+                    <div class="dropdown">
+                        <div class="dropdown-content">
+                            <div class="dropdown-section">
+                                <h4>Roupas</h4>
+                                <a href="#">Vestidos</a>
+                                <a href="#">Blusas</a>
+                                <a href="#">Camisetas</a>
+                                <a href="#">Calças Jeans</a>
+                                <a href="#">Saias</a>
+                                <a href="#">Shorts</a>
+                            </div>
+                            <div class="dropdown-section">
+                                <h4>Calçados</h4>
+                                <a href="#">Tênis</a>
+                                <a href="#">Sandálias</a>
+                                <a href="#">Sapatos</a>
+                                <a href="#">Botas</a>
+                                <a href="#">Rasteirinhas</a>
+                            </div>
+                            <div class="dropdown-section">
+                                <h4>Acessórios</h4>
+                                <a href="#">Bolsas</a>
+                                <a href="#">Bijuterias</a>
+                                <a href="#">Relógios</a>
+                                <a href="#">Óculos</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item has-dropdown">
+                    <a href="#">MASCULINO</a>
+                    <div class="dropdown">
+                        <div class="dropdown-content">
+                            <div class="dropdown-section">
+                                <h4>Roupas</h4>
+                                <a href="#">Camisetas</a>
+                                <a href="#">Camisas</a>
+                                <a href="#">Polos</a>
+                                <a href="#">Calças Jeans</a>
+                                <a href="#">Bermudas</a>
+                            </div>
+                            <div class="dropdown-section">
+                                <h4>Calçados</h4>
+                                <a href="#">Tênis</a>
+                                <a href="#">Sapatos</a>
+                                <a href="#">Sandálias</a>
+                                <a href="#">Botas</a>
+                            </div>
+                            <div class="dropdown-section">
+                                <h4>Acessórios</h4>
+                                <a href="#">Bolsas</a>
+                                <a href="#">Relógios</a>
+                                <a href="#">Óculos</a>
+                                <a href="#">Perfumes</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item"><a href="#">INFANTIL</a></li>
+                <li class="nav-item"><a href="#">CASA</a></li>
+                <li class="nav-item"><a href="#">MARCAS</a></li>
+                <li class="nav-item sale"><a href="#">OUTLET</a></li>
+                <li class="nav-item"><a href="#">DAFITI ECO</a></li>
+                <li class="nav-item"><a href="#">PREMIUM</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO BANNER SLIDER -->
+    <section class="hero-slider">
+        <div class="slider-container" id="heroSlider">
+            <div class="slide active" style="background: linear-gradient(135deg, #e74c3c 0%, #c0392b 50%, #922b21 100%);">
+                <div class="slide-content">
+                    <div class="slide-text">
+                        <span class="slide-tag">Liquida Inverno</span>
+                        <h1>LIQUIDA</h1>
+                        <p>Até 70% OFF em milhares de peças</p>
+                        <a href="#" class="btn-shop">Comprar Agora</a>
+                    </div>
+                    <div class="slide-image">
+                        <div class="slide-model">
+                            <div class="model-placeholder model-female"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slide" style="background: linear-gradient(135deg, #2c3e50 0%, #3498db 50%, #2980b9 100%);">
+                <div class="slide-content">
+                    <div class="slide-text">
+                        <span class="slide-tag">Novidades</span>
+                        <h1>COLEÇÃO INVERNO</h1>
+                        <p>As melhores marcas com os melhores preços</p>
+                        <a href="#" class="btn-shop">Ver Coleção</a>
+                    </div>
+                    <div class="slide-image">
+                        <div class="slide-model">
+                            <div class="model-placeholder model-male"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slide" style="background: linear-gradient(135deg, #8e44ad 0%, #9b59b6 50%, #6c3483 100%);">
+                <div class="slide-content">
+                    <div class="slide-text">
+                        <span class="slide-tag">Exclusivo Online</span>
+                        <h1>TÊNIS & ESPORTES</h1>
+                        <p>Frete grátis para todo o Brasil</p>
+                        <a href="#" class="btn-shop">Aproveitar</a>
+                    </div>
+                    <div class="slide-image">
+                        <div class="slide-model">
+                            <div class="model-placeholder model-shoes"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slider-controls">
+            <button class="slider-btn prev" id="prevSlide"><i class="fas fa-chevron-left"></i></button>
+            <button class="slider-btn next" id="nextSlide"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        <div class="slider-dots" id="sliderDots">
+            <span class="dot active" data-index="0"></span>
+            <span class="dot" data-index="1"></span>
+            <span class="dot" data-index="2"></span>
+        </div>
+    </section>
+
+    <!-- CATEGORY CARDS -->
+    <section class="categories-section">
+        <div class="container">
+            <div class="categories-grid">
+                <a href="#" class="category-card" style="background: linear-gradient(135deg, #e74c3c, #c0392b);">
+                    <div class="category-info">
+                        <h3>ESPORTE</h3>
+                        <p>Feminino</p>
+                        <p>Masculino</p>
+                    </div>
+                    <div class="category-icon"><i class="fas fa-running"></i></div>
+                </a>
+                <a href="#" class="category-card" style="background: linear-gradient(135deg, #8e44ad, #6c3483);">
+                    <div class="category-info">
+                        <h3>CASA</h3>
+                        <p>Quarto</p>
+                        <p>Sala</p>
+                    </div>
+                    <div class="category-icon"><i class="fas fa-couch"></i></div>
+                </a>
+                <a href="#" class="category-card" style="background: linear-gradient(135deg, #2ecc71, #27ae60);">
+                    <div class="category-info">
+                        <h3>INFANTIL</h3>
+                        <p>Calçados</p>
+                        <p>Roupas</p>
+                    </div>
+                    <div class="category-icon"><i class="fas fa-child"></i></div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- DEALS BANNER -->
+    <section class="deals-banner">
+        <div class="container">
+            <div class="deal-card">
+                <div class="deal-circle purple">
+                    <span>Até 60% OFF</span>
+                </div>
+                <div class="deal-circle blue">
+                    <span>Frete Grátis</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FLASH SALE -->
+    <section class="section flash-sale">
+        <div class="container">
+            <div class="section-header">
+                <h2><i class="fas fa-bolt"></i> OFERTA RELÂMPAGO</h2>
+                <div class="countdown" id="countdown">
+                    <span class="countdown-item"><span id="hours">08</span>h</span>
+                    <span class="countdown-item"><span id="minutes">45</span>m</span>
+                    <span class="countdown-item"><span id="seconds">30</span>s</span>
+                </div>
+                <a href="#" class="see-all">Ver tudo <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="products-grid" id="flashProducts">
+                <!-- Products will be injected by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- FEMININO SECTION -->
+    <section class="section category-showcase">
+        <div class="container">
+            <div class="section-header">
+                <h2>FEMININO</h2>
+                <a href="#" class="see-all">Ver tudo <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="products-grid" id="femininoProducts">
+                <!-- Products will be injected by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- MASCULINO SECTION -->
+    <section class="section category-showcase">
+        <div class="container">
+            <div class="section-header">
+                <h2>MASCULINO</h2>
+                <a href="#" class="see-all">Ver tudo <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="products-grid" id="masculinoProducts">
+                <!-- Products will be injected by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- BRANDS SECTION -->
+    <section class="section brands-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>MARCAS EM DESTAQUE</h2>
+            </div>
+            <div class="brands-grid">
+                <div class="brand-item">NIKE</div>
+                <div class="brand-item">ADIDAS</div>
+                <div class="brand-item">PUMA</div>
+                <div class="brand-item">UNDER ARMOUR</div>
+                <div class="brand-item">OAKLEY</div>
+                <div class="brand-item">LACOSTE</div>
+                <div class="brand-item">TOMMY HILFIGER</div>
+                <div class="brand-item">CALVIN KLEIN</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BENEFITS -->
+    <section class="benefits-section">
+        <div class="container">
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <i class="fas fa-truck"></i>
+                    <div>
+                        <h4>Frete Grátis</h4>
+                        <p>Em compras acima de R$ 199</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-undo"></i>
+                    <div>
+                        <h4>Troca Grátis</h4>
+                        <p>Até 30 dias para trocar</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <div>
+                        <h4>Compra Segura</h4>
+                        <p>Seus dados protegidos</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-credit-card"></i>
+                    <div>
+                        <h4>Parcele em até 10x</h4>
+                        <p>Sem juros no cartão</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="newsletter-content">
+                <h3>Cadastre-se e receba ofertas exclusivas!</h3>
+                <p>Ganhe 10% de desconto na sua primeira compra</p>
+                <form class="newsletter-form" id="newsletterForm">
+                    <input type="email" placeholder="Digite seu e-mail" required>
+                    <button type="submit">Cadastrar</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>INSTITUCIONAL</h4>
+                    <a href="#">Sobre a Dafiti</a>
+                    <a href="#">Trabalhe Conosco</a>
+                    <a href="#">Imprensa</a>
+                    <a href="#">Sustentabilidade</a>
+                </div>
+                <div class="footer-col">
+                    <h4>AJUDA</h4>
+                    <a href="#">Central de Atendimento</a>
+                    <a href="#">Trocas e Devoluções</a>
+                    <a href="#">Prazo de Entrega</a>
+                    <a href="#">Formas de Pagamento</a>
+                    <a href="#">Como Comprar</a>
+                </div>
+                <div class="footer-col">
+                    <h4>CATEGORIAS</h4>
+                    <a href="#">Feminino</a>
+                    <a href="#">Masculino</a>
+                    <a href="#">Infantil</a>
+                    <a href="#">Casa</a>
+                    <a href="#">Esporte</a>
+                </div>
+                <div class="footer-col">
+                    <h4>REDES SOCIAIS</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                    <div class="app-badges">
+                        <a href="#" class="app-badge"><i class="fab fa-apple"></i> App Store</a>
+                        <a href="#" class="app-badge"><i class="fab fa-google-play"></i> Google Play</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Dafiti - Todos os direitos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- CART SIDEBAR -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3><i class="fas fa-shopping-bag"></i> Meu Carrinho</h3>
+            <button class="cart-close" id="cartClose"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <div class="cart-empty" id="cartEmpty">
+                <i class="fas fa-shopping-bag"></i>
+                <p>Seu carrinho está vazio</p>
+                <a href="#" class="btn-continue" onclick="toggleCart()">Continuar Comprando</a>
+            </div>
+        </div>
+        <div class="cart-footer" id="cartFooter" style="display: none;">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cartTotal">R$ 0,00</span>
+            </div>
+            <button class="btn-checkout">Finalizar Compra</button>
+            <a href="#" class="btn-continue" onclick="toggleCart()">Continuar Comprando</a>
+        </div>
+    </div>
+
+    <!-- QUICK VIEW MODAL -->
+    <div class="modal-overlay" id="quickViewModal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose"><i class="fas fa-times"></i></button>
+            <div class="modal-body" id="modalBody">
+                <!-- Content injected by JS -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

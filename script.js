@@ -58,6 +58,19 @@ const searchInput = document.getElementById('searchInput');
 const searchBtn = document.getElementById('searchBtn');
 const newsletterForm = document.getElementById('newsletterForm');
 
+// Login elements
+const loginBtn = document.getElementById('loginBtn');
+const loginModal = document.getElementById('loginModal');
+const loginModalClose = document.getElementById('loginModalClose');
+const tabLogin = document.getElementById('tabLogin');
+const tabRegister = document.getElementById('tabRegister');
+const loginFormWrapper = document.getElementById('loginFormWrapper');
+const registerFormWrapper = document.getElementById('registerFormWrapper');
+const loginForm = document.getElementById('loginForm');
+const registerForm = document.getElementById('registerForm');
+const registerPassword = document.getElementById('registerPassword');
+const passwordStrength = document.getElementById('passwordStrength');
+
 // ===== SLIDER =====
 let currentSlide = 0;
 let slideInterval;
@@ -389,7 +402,197 @@ document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
         if (modal.classList.contains('active')) closeModal();
         if (cartSidebar.classList.contains('active')) toggleCart();
+        if (loginModal.classList.contains('active')) closeLoginModal();
     }
 });
+
+// ===== LOGIN MODAL =====
+function openLoginModal() {
+    loginModal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeLoginModal() {
+    loginModal.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+loginBtn.addEventListener('click', openLoginModal);
+loginModalClose.addEventListener('click', closeLoginModal);
+
+loginModal.addEventListener('click', (e) => {
+    if (e.target === loginModal) closeLoginModal();
+});
+
+// Tab switching
+tabLogin.addEventListener('click', () => {
+    tabLogin.classList.add('active');
+    tabRegister.classList.remove('active');
+    loginFormWrapper.classList.add('active');
+    registerFormWrapper.classList.remove('active');
+});
+
+tabRegister.addEventListener('click', () => {
+    tabRegister.classList.add('active');
+    tabLogin.classList.remove('active');
+    registerFormWrapper.classList.add('active');
+    loginFormWrapper.classList.remove('active');
+});
+
+// Password visibility toggle
+function togglePasswordVisibility(inputId, btn) {
+    const input = document.getElementById(inputId);
+    const icon = btn.querySelector('i');
+    if (input.type === 'password') {
+        input.type = 'text';
+        icon.className = 'fas fa-eye-slash';
+    } else {
+        input.type = 'password';
+        icon.className = 'fas fa-eye';
+    }
+}
+
+// Password strength checker
+registerPassword.addEventListener('input', function () {
+    const password = this.value;
+    const strengthBar = passwordStrength.querySelector('.strength-bar');
+    const strengthText = passwordStrength.querySelector('.strength-text');
+    let strength = 0;
+
+    if (password.length >= 6) strength++;
+    if (password.length >= 10) strength++;
+    if (/[A-Z]/.test(password)) strength++;
+    if (/[0-9]/.test(password)) strength++;
+    if (/[^A-Za-z0-9]/.test(password)) strength++;
+
+    const levels = [
+        { width: '0%', color: '#eee', text: '' },
+        { width: '20%', color: '#e74c3c', text: 'Muito fraca' },
+        { width: '40%', color: '#e67e22', text: 'Fraca' },
+        { width: '60%', color: '#f39c12', text: 'Média' },
+        { width: '80%', color: '#27ae60', text: 'Forte' },
+        { width: '100%', color: '#2ecc71', text: 'Muito forte' },
+    ];
+
+    const level = levels[strength];
+    strengthBar.style.width = level.width;
+    strengthBar.style.background = level.color;
+    strengthText.textContent = level.text;
+    strengthText.style.color = level.color;
+});
+
+// CPF mask
+const registerCpf = document.getElementById('registerCpf');
+registerCpf.addEventListener('input', function () {
+    let value = this.value.replace(/\D/g, '');
+    if (value.length > 11) value = value.slice(0, 11);
+    if (value.length > 9) {
+        value = value.replace(/(\d{3})(\d{3})(\d{3})(\d{1,2})/, '$1.$2.$3-$4');
+    } else if (value.length > 6) {
+        value = value.replace(/(\d{3})(\d{3})(\d{1,3})/, '$1.$2.$3');
+    } else if (value.length > 3) {
+        value = value.replace(/(\d{3})(\d{1,3})/, '$1.$2');
+    }
+    this.value = value;
+});
+
+// Login form submit
+loginForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const email = document.getElementById('loginEmail').value;
+    const password = document.getElementById('loginPassword').value;
+
+    // Simulate login (in production, this would call an API)
+    const users = JSON.parse(localStorage.getItem('dafiti_users') || '[]');
+    const user = users.find(u => u.email === email && u.password === password);
+
+    if (user) {
+        showToast(`Bem-vindo(a), ${user.name.split(' ')[0]}! 🎉`);
+        closeLoginModal();
+        // Update header to show logged-in state
+        updateHeaderForLoggedInUser(user);
+        loginForm.reset();
+    } else {
+        // Demo: allow any login
+        showToast('Login realizado com sucesso! 🎉');
+        closeLoginModal();
+        const demoUser = { name: 'Usuário', email: email };
+        updateHeaderForLoggedInUser(demoUser);
+        loginForm.reset();
+    }
+});
+
+// Register form submit
+registerForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const name = document.getElementById('registerName').value;
+    const email = document.getElementById('registerEmail').value;
+    const cpf = document.getElementById('registerCpf').value;
+    const password = document.getElementById('registerPassword').value;
+    const confirmPassword = document.getElementById('registerConfirmPassword').value;
+
+    if (password !== confirmPassword) {
+        showToast('As senhas não coincidem! ❌');
+        return;
+    }
+
+    if (password.length < 6) {
+        showToast('A senha deve ter no mínimo 6 caracteres! ❌');
+        return;
+    }
+
+    // Save user (simulated with localStorage)
+    const users = JSON.parse(localStorage.getItem('dafiti_users') || '[]');
+
+    if (users.find(u => u.email === email)) {
+        showToast('Este e-mail já está cadastrado! ❌');
+        return;
+    }
+
+    users.push({ name, email, cpf, password });
+    localStorage.setItem('dafiti_users', JSON.stringify(users));
+
+    showToast('Cadastro realizado com sucesso! 🎉');
+
+    // Switch to login tab
+    tabLogin.click();
+    document.getElementById('loginEmail').value = email;
+    registerForm.reset();
+    passwordStrength.querySelector('.strength-bar').style.width = '0%';
+    passwordStrength.querySelector('.strength-text').textContent = '';
+});
+
+// Update header for logged-in user
+function updateHeaderForLoggedInUser(user) {
+    const loginBtnElement = document.getElementById('loginBtn');
+    const firstName = user.name.split(' ')[0];
+    loginBtnElement.innerHTML = `
+        <i class="fas fa-user-circle" style="font-size: 24px;"></i>
+        <span>${firstName}</span>
+        <i class="fas fa-chevron-down"></i>
+    `;
+    // Add logout functionality on second click
+    loginBtnElement.onclick = function () {
+        if (confirm('Deseja sair da sua conta?')) {
+            loginBtnElement.innerHTML = `
+                <i class="fas fa-user"></i>
+                <span>Entrar</span>
+                <i class="fas fa-chevron-down"></i>
+            `;
+            loginBtnElement.onclick = openLoginModal;
+            showToast('Você saiu da sua conta.');
+        }
+    };
+}
+
+// Check if user was logged in (session simulation)
+(function checkLoggedIn() {
+    const lastUser = localStorage.getItem('dafiti_lastUser');
+    if (lastUser) {
+        const user = JSON.parse(lastUser);
+        updateHeaderForLoggedInUser(user);
+    }
+})();
 
 console.log('🛍️ Dafiti Store loaded successfully!');
